@@ -5,10 +5,6 @@
   color: #008c7d !important;
 }
 
-/* *:not() {
-  border: none !important;
-} */
-
 /* Code canvas top shadow */
 .monaco-editor .scroll-decoration {
   box-shadow: 0px 0px 20px rgba(0, 0, 0, .75) !important;
@@ -25,14 +21,10 @@
   box-shadow: 0px 0px 50px rgba(0, 0, 0, .25);
 }
 
-/* .part.sidebar.right > div > div > div:nth-child(1) {
-  display: none !important;
-} */
-
 /* Cursor style */
 .monaco-editor .cursor {
-    height: 22px !important; /* Altura visual do cursor */
-    width: 2px !important; /* Largura do cursor */
+    height: 22px !important;
+    width: 2px !important;
     transform: translateY(calc((var(--editor-line-height, 32px) - 22px) / 2)) !important;
   }
 
@@ -40,10 +32,10 @@
 
 /* File Explorer Selected Item */
 .monaco-list.list_id_1 .monaco-list-row.selected {
-  background-color: #0f111a !important;
+  background-color: #0d0d0d !important;
   opacity: 0.9 !important;
-  border-top: 1px #727b90 solid;
-  border-bottom: 1px #727b90 solid;
+  border-top: 1px #0d0d0d solid;
+  border-bottom: 1px #0d0d0d solid;
 }
 
 /* Hide the ">" chevron icon */
@@ -67,31 +59,15 @@
 .monaco-list .monaco-list-row
 .monaco-icon-label .label-name {
   font-family: 'Geist Mono', monospace !important;
-  font-size: 13px !important;
+  font-size: 15px !important;
   font-weight: 400 !important;
   color: #FFF !important;
 }
 
 .explorer-item-edited {
 font-family: Geist Mono !important;
-font-size: 13px !important;
+font-size: 15px !important;
 }
-
-/* .monaco-workbench .codicon[class*=codicon-] {
-  opacity: 0 !important;
-} */
-
-/* .explorer-folders-view .monaco-list-row {
-  padding-left: 20px !important;
-} */
-
-/* .monaco-list.list_id_1 .monaco-tl-indent > .indent-guide.active {
-  border: none !important;
-}
-
-.monaco-list.list_id_1 .monaco-tl-indent > .indent-guide.active:hover {
-  border: none !important;
-} */
 
 /* Sidebar top shadow */
 .monaco-scrollable-element>.shadow.top {
@@ -108,24 +84,17 @@ font-size: 13px !important;
 }
 .composite.title h2 {
   font-weight: bold !important;
-  font-size: 12px !important;
+  font-size: 13px !important;
   text-transform: uppercase;
-  color: #bc9abc !important;
+  color: #6F4E37 !important;
 }
-
-/* .composite.title h2::before {
-  display: inline-block;
-  margin-right: 6px;
-  font-size: 1.1rem;
-  content: '';
-} */
 
 /* Scroll Bar */
 .slider {
   position: absolute !important;
-  right: 1px !important;
-  width: 1px !important;
-  background: #bc9abc !important;
+  right: 2px !important;
+  width: 2px !important;
+  background: #6F4E37 !important;
   left: auto !important;
 }
 
@@ -134,7 +103,7 @@ font-size: 13px !important;
 .monaco-hover {
   box-shadow: 0px 8px 32px rgba(0,0,0,.45) !important;
   /* padding: 10px !important; */
-  background-image: linear-gradient(#3c3c50 0%, #2a2b38 100%) !important;
+  background-image: linear-gradient(#0d0d0d 0%, #1A1A1A 100%) !important;
   backdrop-filter: blur(3px) !important;
   border-radius: 16px !important;
   border: none !important;
@@ -144,11 +113,6 @@ font-size: 13px !important;
 .monaco-resizable-hover {
   border: none !important;
 }
-
-/* .monaco-hover > div, .monaco-editor-hover > div {
-  padding: 10px !important;
-  width: 600px !important;
-} */
 
 /* Project title's style at the top. */
 .monaco-workbench .part.titlebar>.titlebar-container>.titlebar-center>.window-title>.command-center .action-item.command-center-center {
@@ -199,8 +163,8 @@ font-size: 13px !important;
   box-shadow: 0px 8px 32px rgba(0, 0, 0, .35) !important;
   /* border: 4px solid rgba(24, 135, 129, .35) !important; */
   padding: 10px 10px 18px 10px !important;
-  background-image: linear-gradient(#3c3c50 0%, #2a2b38 100%) !important;
-  /* background: #3c3c50 !important; */
+  background-image: linear-gradient(#0d0d0d 0%, #1A1A1A 100%) !important;
+  /* background: #0d0d0d !important; */
   backdrop-filter: blur(3px) !important;
   border-radius: 20px !important;
   /* width: 50% !important; */
@@ -209,17 +173,6 @@ font-size: 13px !important;
 .quick-input-list, .quick-input-list .list_id_6 {
   min-height: 400px !important;
 }
-
-/* .quick-input-widget::backdrop {
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, .15);
-  top: 0;
-  left: 0;
-  backdrop-filter: blur(8px);
-} */
 
 /* Remove background for lists */
 .monaco-list-rows {
