@@ -1,0 +1,158 @@
+/* transparency */
+
+body.firefox.span.build {
+    color: red !important;
+}
+
+span {
+    color: white !important;
+}
+
+wa-dialog.startParameters.style-plastique {
+    position: relative !important;
+
+    overflow: hidden !important;
+
+          box-shadow:
+      inset 0 0 5px rgba(0, 170, 255, 0.6),
+      inset 0 0 15px rgba(0, 85, 255, 0.5),
+      inset 0 0 25px rgba(0, 255, 255, 0.4);
+  }
+}
+
+@keyframes urlbar-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: -300% 50%;
+    }
+}
+
+@keyframes rotateGlow {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+wa-dialog.startParameters.style-plastique::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    animation: rotateGlow 30s linear infinite;
+
+    background: linear-gradient(
+        45deg,
+        rgba(0, 128, 255, 0.1),
+        rgba(0, 64, 255, 0.2),
+        rgba(0, 128, 255, 0.1),
+        rgba(0, 255, 255, 0.2),
+        rgba(0, 128, 255, 0.1)
+    );
+
+    background-size: 300% 100%;
+
+    animation: urlbar-gradient 8s linear infinite;
+
+    filter: blur(24px) brightness(1.1) contrast(1.2);
+
+    opacity: 0.9;
+
+    transition: opacity 0.5s ease-in-out;
+
+    border-radius: 12px;
+}
+
+wa-dialog.startParameters img {
+    position: relative !important;
+
+    z-index: 1 !important;
+
+    width: 100% !important;
+
+    margin-block-end: 10px !important;
+
+    border-radius: 10px !important;
+
+    transition: transform 0.3s ease !important;
+}
+
+wa-dialog.startParameters::part(btn-ok),
+wa-dialog.startParameters::part(btn-settings) {
+    position: relative; /* Essencial para posicionar o ::before */
+    z-index: 1; /* Garante que o botão fique na frente do brilho */
+
+    /* Estilos visuais do botão */
+    background-color: #44475a;
+    color: #f8f8f2;
+    border: 1px solid #6272a4;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.4s ease;
+    filter: blur(20px);
+}
+
+:host.footer {
+    background-color: rgba(40, 42, 54, 0.9);
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.button-container {
+    display: flex;
+    gap: 20px; /* Espaço entre os botões */
+    margin-top: 20px;
+}
+
+/* --- Início do CSS do Efeito nos Botões --- */
+
+wa-dialog.startParameters::part(btn-ok):hover {
+    color: white;
+
+}
+
+/* O pseudo-elemento que cria o brilho */
+wa-dialog.startParameters::part(btn-ok)::before {
+    content: "";
+    position: absolute;
+    z-index: -1; /* Posiciona o brilho atrás do botão */
+    inset: -5px; /* Expande a área do brilho 5px para fora */
+    pointer-events: none;
+
+    background: linear-gradient(45deg, #00aaff, #0055ff, #00ffff, #00aaff);
+
+    /* Efeito de desfoque (blur) para criar o "glow" */
+    filter: blur(10px);
+
+    /* Escondido por padrão e com transição suave */
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* Ativa o brilho quando o mouse passa por cima do botão */
+wa-dialog.startParameters::part(btn-ok)::before {
+    opacity: 0.8;
+}
+
+:root {
+    --wa-dialog-background-color: rgba(10, 10, 15, 0.2) !important;
+
+    --wa-dialog-font-family: "Roboto" !important;
+}
