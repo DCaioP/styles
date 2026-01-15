@@ -1,0 +1,59 @@
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Build outputs
+dist/
+out/
+build/
+*.pyc
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs
+*.log
+
+# Environment variables and secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+
+# Editor/IDE folders
+.vscode/
+.idea/
+*.suo
+.ntvs
+*.njsproj
+*.sln
+*.swp
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Testing
+coverage/
+.nyc_output
+
+# Documentation/Artifacts
+docs/_build/
+site/
+
+# Image/SVG Tooling (temp files)
+.parcel-cache/
+.cache/
+.next/
+
+# Shell Script Specifics
+*.sh.log
+*.sh.done

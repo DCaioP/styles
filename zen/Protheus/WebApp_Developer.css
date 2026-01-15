@@ -1,0 +1,329 @@
+/* =========================================
+            Pagina Inicial
+========================================= */
+/* Base */
+body.firefox {
+    font-family: 'Inter', Roboto, sans-serif !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    --wa-dialog-background-color: transparent !important;
+    --glass-bg: rgba(25, 20, 20, 0.75) !important;
+    --primary-color: red !important;
+    --glass-border: rgba(255, 255, 255, 0.1) !important;
+    --wa-combobox-background-color: tranparent !important;
+}
+
+/* Modal/Dialog */
+wa-dialog.startParameters.style-plastique {
+    position: relative !important;
+    width: clamp(425px, 90%, 500px) !important;
+    height: clamp(200px, 500px, 500px) !important;
+    padding: 40px 30px !important;
+    border-radius: 24px !important;
+    color: var(--text-main) !important;
+    background-color: rgba(35, 30, 30, 0.3) !important;
+    backdrop-filter: blur(40px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(40px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 40px 80px -12px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Esconder imagem do topo */
+wa-dialog.startParameters.style-plastique > img {
+    display: none !important;
+}
+
+/* Criar novo título */
+wa-dialog.startParameters.style-plastique::before {
+    content: 'Protheus Developer' !important;
+    font-size: 2.5rem !important;
+    font-weight: 600 !important;
+    letter-spacing: -1px !important;
+    padding-bottom: 10px !important;
+
+    background: radial-gradient(at 0% 0%, #ffbf00 0%, transparent 50%),
+        radial-gradient(at 100% 0%, #ff4500 0%, transparent 50%),
+        radial-gradient(at 100% 100%, #8b0000 0%, transparent 50%),
+        radial-gradient(at 0% 100%, #ff8c00 0%, transparent 50%), #b91d1d;
+
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    background-size: 200% 200% !important;
+    animation: amberFlow 8s ease infinite !important;
+    filter: drop-shadow(0 4px 10px rgba(185, 29, 29, 0.06)) !important;
+}
+
+@keyframes amberFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+wa-dialog.startParameters.style-plastique legend {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+
+    color: Red !important;
+    opacity: 0.8 !important;
+
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.4) !important;
+}
+
+wa-dialog.startParameters.style-plastique legend::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    margin-left: 15px;
+    background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.3),
+    transparent
+    ) !important;
+}
+
+wa-dialog.startParameters.style-plastique fieldset {
+    border: none !important;
+    padding: 0 !important;
+    margin: 30px 0 15px 0 !important;
+    position: relative !important;
+    --wa-combobox-color: white !important;
+}
+
+/* O Combobox container */
+wa-combobox {
+    width: 100% !important;
+    height: 48px !important;
+    background: rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    padding-right: 12px !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    padding-left: 1vh !important;
+    overflow: hidden !important;
+    --wa-combobox-font-size: 0.95rem !important;
+    --wa-combobox-focus-outline: none !important;
+    --wa-combobox-focus-ring: none !important;
+    --wa-combobox-focus-border-color: transparent !important;
+    --wa-combobox-border-color: transparent !important;
+    --wa-combobox-border-width: 0px !important;
+    --wa-shadow: none !important;
+    --wa-button-focus-outline: none !important;
+    --wa-button-focus-border-color: transparent !important;
+}
+
+wa-combobox:hover {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+wa-combobox:focus-within {
+    outline: none !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 4px rgba(255, 70, 0, 0.2) !important;
+    background: rgba(0, 0, 0, 0) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Buttons */
+wa-dialog.startParameters::part(btn-ok),
+wa-dialog.startParameters::part(btn-settings) {
+    --wa-button-width: auto !important;
+    --wa-button-height: auto !important;
+    --wa-button-padding: 0 !important;
+    --wa-button-background-color: transparent !important;
+    --wa-button-focus-outline: none !important;
+    --wa-button-border-width: 0px !important;
+
+    height: 50px !important;
+    min-width: 160px !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    position: relative !important;
+    transition: all 0.2s ease-in-out !important;
+
+    font-size: 0 !important;
+    color: transparent !important;
+    --wa-button-text-color: transparent !important;
+}
+
+/* btn Enter */
+wa-dialog.startParameters::part(btn-ok) {
+    background-color: #c62828 !important;
+    border: 1px solid #c62828 !important;
+    will-change: transform;
+}
+
+wa-dialog.startParameters::part(btn-ok)::after {
+    content: 'Enter' !important;
+
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+
+    font-family: 'Inter', Roboto, sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    color: #ffffff !important;
+    white-space: nowrap !important;
+}
+
+wa-dialog.startParameters::part(btn-ok):hover,
+wa-dialog.startParameters::part(btn-ok):focus {
+    background-color: #d32f2f !important;
+    transform: scale3d(1.1, 1.1, 1.1) !important;
+    box-shadow: 0 8px 24px rgba(211, 47, 47, 0.5) !important;
+    --wa-button-hover-background-color: #d32f2f;
+    outline: none !important;
+    border-color: #d32f2f !important;
+
+    filter: brightness(1.1);
+}
+
+wa-dialog.startParameters::part(btn-ok):active {
+    transform: scale(1.2) !important;
+}
+
+/* btn settings */
+wa-dialog.startParameters::part(btn-settings) {
+    background-color: transparent !important;
+    border: 1px solid rgba(198, 40, 40, 0.5) !important;
+    margin-right: 15px !important;
+}
+
+wa-dialog.startParameters::part(btn-settings)::after {
+    content: 'Settings' !important;
+
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+
+    font-family: 'Inter', Roboto, sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    color: #ef9a9a !important;
+    white-space: nowrap !important;
+}
+
+wa-dialog.startParameters::part(btn-settings):hover,
+wa-dialog.startParameters::part(btn-settings):focus {
+    background-color: rgba(198, 40, 40, 0.1) !important;
+    outline: none !important;
+    border-color: #c62828 !important;
+}
+
+wa-dialog.startParameters::part(btn-settings):hover::after {
+    color: #ffffff !important;
+}
+
+wa-dialog.startParameters::part(btn-settings):active {
+    background-color: rgba(198, 40, 40, 0.2) !important;
+    transform: scale(0.98) !important;
+}
+
+wa-dialog.startParameters::part(btn-settings) {
+    background-color: transparent !important;
+    border: 1px solid rgba(198, 40, 40, 0.5) !important;
+    margin-right: 15px !important;
+}
+
+wa-dialog.startParameters::part(btn-settings)::after {
+    content: 'Settings' !important;
+
+    font-family: 'Inter', Roboto, sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    color: #ef9a9a !important;
+    visibility: visible !important;
+}
+
+wa-dialog.startParameters::part(btn-settings):hover {
+    background-color: rgba(198, 40, 40, 0.1) !important;
+    border-color: #c62828 !important;
+}
+
+wa-dialog.startParameters::part(btn-settings):hover::after {
+    color: #ffffff !important;
+}
+
+wa-dialog.startParameters::part(btn-ok):active,
+wa-dialog.startParameters::part(btn-settings):active {
+    transform: scale(0.98) !important;
+}
+
+button.startParameters::part(btn-ok) {
+    background: var(--primary-color) !important;
+    color: #000 !important;
+    border: none !important;
+    padding: 12px 24px !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: transform 0.2s, filter 0.2s !important;
+}
+
+button.startParameters::part(btn-ok):hover {
+    filter: brightness(1.1) !important;
+    transform: translateY(-2px) !important;
+}
+
+button.btn-settings {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: white !important;
+    border: 1px solid var(--glass-border) !important;
+    padding: 12px !important;
+    border-radius: 12px !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+}
+
+button.btn-settings:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* EM MANUTENÇÃO */
+main {
+    border: none !important;
+    background: rgba(20, 20, 20, 0.6) !important;
+    color: white !important;
+    backdrop-filter: blur(2px) !important;
+}
+wa-column {
+    border: none !important;
+    background: rgba(20, 20, 20, 0.6) !important;
+    color: white !important;
+    backdrop-filter: blur(6px) !important;
+}
+
+wa-row {
+    border: 1px solid #transparent !important;
+    border-radius: 8px !important;
+    margin-bottom: 10px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    display: block !important;
+    background: rgba(15, 15, 15, 0.5) !important;
+}

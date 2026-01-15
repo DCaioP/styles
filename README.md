@@ -14,6 +14,9 @@ Este repositório centraliza os arquivos que uso para customizar o **Visual Stud
 ├── jetbrains/
 │   ├── tema.icls         # Temas customizados para JetBrains
 │   └── ...
+├── Zen                   # Pastar com css e injections para o navegador
+│   ├── Folders
+├── WARP.md
 └── README.md
 
 ```
@@ -23,6 +26,7 @@ Este repositório centraliza os arquivos que uso para customizar o **Visual Stud
 Para aplicar estilos customizados no VSCode (por exemplo, via extensão _Custom CSS and JS Loader_), é necessário rodar o VSCode com permissões elevadas e acesso ao ambiente gráfico. No Arch Linux, uso o seguinte comando:
 
 ``` zsh
+xhost +local:root
 sudo --preserve-env=DISPLAY,WAYLAND_DISPLAY,XDG_RUNTIME_DIR,DBUS_SESSION_BUS_ADDRESS,XAUTHORITY \
      code --no-sandbox --user-data-dir=/tmp/vscode-root
 
