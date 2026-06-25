@@ -1,4 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Injeta uma única vez o filtro SVG do "rim líquido" do Liquid Glass (Prisma).
+    // O ::after do .quick-input-widget usa filter: url(#lg-rim-wobble) pra ondular
+    // a moldura. Sem este SVG no DOM o anel ainda aparece, só não ondula.
+    ensureLiquidGlassFilter();
+
+    function ensureLiquidGlassFilter() {
+        if (document.getElementById('lg-rim-wobble')) return;
+        const ns = 'http://www.w3.org/2000/svg';
+        const svg = document.createElementNS(ns, 'svg');
+        svg.setAttribute('aria-hidden', 'true');
+        svg.setAttribute('width', '0');
+        svg.setAttribute('height', '0');
+        svg.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;';
+        svg.innerHTML =
+            '<filter id="lg-rim-wobble" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">' +
+            '<feTurbulence type="fractalNoise" baseFrequency="0.011 0.015" numOctaves="2" seed="7" stitchTiles="stitch" result="lgNoise"/>' +
+            '<feDisplacementMap in="SourceGraphic" in2="lgNoise" scale="5" xChannelSelector="R" yChannelSelector="G"/>' +
+            '</filter>';
+        document.body.appendChild(svg);
+    }
+
     const checkElement = setInterval(() => {
         const commandDialog = document.querySelector(".quick-input-widget");
         if (commandDialog) {
