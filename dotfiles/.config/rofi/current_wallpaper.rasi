@@ -1,0 +1,6 @@
+/* Wallpaper configuration */
+* {
+    /* Set to none initially - can be updated with actual wallpaper path */
+    current-image: none;
+}
+

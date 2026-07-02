@@ -1,0 +1,38 @@
+# Dependências da identidade visual/funcional do Hyprland (Arch).
+# NÃO é auto-instalado — referência p/ reconstruir num sistema novo:
+#   sudo pacman -S --needed $(grep -v '^#' packages.txt | grep -v '^$')
+# (pacotes AUR marcados; use yay/paru)
+
+hyprland
+hypridle
+hyprlock    # (não instalado / nome pode variar / AUR)
+hyprshade
+hyprpicker
+waybar
+swww
+waypaper    # (não instalado / nome pode variar / AUR)
+wofi
+rofi-wayland
+dunst    # (não instalado / nome pode variar / AUR)
+swaync
+wlogout
+nwg-dock-hyprland    # (não instalado / nome pode variar / AUR)
+cliphist
+wl-clipboard
+python-pywal    # (não instalado / nome pode variar / AUR)
+kitty
+ags    # (não instalado / nome pode variar / AUR)
+qt6ct
+kvantum    # (não instalado / nome pode variar / AUR)
+xsettingsd    # (não instalado / nome pode variar / AUR)
+nwg-look
+polkit-gnome
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+grim
+slurp
+brightnessctl
+pavucontrol
+network-manager-applet
+ttf-nerd-fonts-symbols    # (não instalado / nome pode variar / AUR)
+noto-fonts

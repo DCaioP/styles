@@ -1,0 +1,8 @@
+# -----------------------------------------------------
+# FUNCTIONS
+# -----------------------------------------------------
+
+# ls_nosymlink() {
+#   find . -mindepth 1 -maxdepth 1 ! -type l -printf '%P\0' \
+#     | xargs -0r eza -d --icons=always --group-directories-first
+# }

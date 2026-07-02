@@ -1,0 +1,230 @@
+/* =============================================================================
+ *  Waybar · Liquid Glass  (Tier 0/1)
+ *  Ilhas de vidro fosco para Waybar (GTK3) + Hyprland.
+ *
+ *  O frost real vem do COMPOSITOR (layerrule = blur, waybar). O material de
+ *  vidro é montado AQUI com o que o CSS do GTK3 permite (sem backdrop-filter /
+ *  filter): pilha de gradientes + rim de luz + sombra em camadas.
+ *
+ *  Cores seguem o pywal (colors-waybar.css). Pra recolorir, mexa nos TOKENS.
+ *  Manual/instalação: waybar-liquid-glass/README.md
+ * ========================================================================== */
+
+@import url('/home/caiop/.cache/wal/colors-waybar.css');
+
+/* ----------------------------------------------------------------------------
+ *  TOKENS  — mude aqui pra recolorir o vidro.
+ *  (GTK3 só tokeniza COR via @define-color; número — opacidade, blur, offset —
+ *   não dá pra tokenizar, então fica dentro do componente, comentado.)
+ * ------------------------------------------------------------------------- */
+@define-color glass-tint   @background;  /* corpo do vidro (segue o wallpaper via wal) */
+@define-color glass-accent @color6;      /* acento: hairline + halo no hover           */
+@define-color glass-rim    #ffffff;      /* luz especular das bordas (rim/sheen)       */
+@define-color glass-shadow #000000;      /* sombra: contato + profundidade             */
+@define-color glass-text   @color7;      /* texto e ícones dos módulos                 */
+
+* {
+    font-size: 15px;
+    font-family: "CodeNewRoman Nerd Font Propo";
+}
+
+/* A janela raiz é só um canvas transparente; as ILHAS é que são o vidro. */
+window#waybar {
+    all: unset;
+}
+
+/* ============================================================================
+ *  COMPONENTE · Ilha de vidro
+ *  Pra dar o tratamento de vidro a qualquer container, adicione o seletor dele
+ *  às duas listas abaixo (estado normal + :hover).
+ *
+ *  Anatomia:
+ *   background  → specular hotspot + light-wrap de acento + tint vertical
+ *   box-shadow  → (inset) rim topo, sheen, rim base, hairline, sombra interna
+ *                 (drop)  contato curto + profundidade ampla
+ *
+ *  ⚠ A sombra projeta ~24px pra baixo. A `margin` (sobretudo a de baixo) dá
+ *    espaço pro layer crescer e NÃO clipar a sombra. Emparelhe com o Hyprland:
+ *    waybar `"exclusive": false` + `gaps_out` topo maior (ver README).
+ * ========================================================================= */
+.modules-left,
+.modules-center,
+.modules-right {
+    padding: 5px 12px;
+    margin: 14px 12px 30px 12px;   /* T R B L — folga de baixo = espaço p/ a sombra */
+    border-radius: 16px;
+    background-image:
+        radial-gradient(ellipse farthest-side at 30% -10%,
+            alpha(@glass-rim, 0.09), alpha(@glass-rim, 0.0) 62%),    /* specular glossy   */
+        radial-gradient(ellipse farthest-side at 80% 130%,
+            alpha(@glass-accent, 0.10), alpha(@glass-rim, 0.0) 72%), /* light-wrap acento */
+        linear-gradient(to bottom,
+            alpha(@glass-tint, 0.24),
+            alpha(@glass-tint, 0.44));                               /* tint vertical (>= ignore_alpha p/ borrar; sombra limpa) */
+    box-shadow:
+        inset 0 1px 0 0 alpha(@glass-rim, 0.22),           /* rim especular topo       */
+        inset 0 6px 10px -11px alpha(@glass-rim, 0.10),    /* sheen difuso             */
+        inset 0 -1px 0 0 alpha(@glass-rim, 0.08),          /* rim inferior             */
+        inset 0 0 0 1px alpha(@glass-rim, 0.05),           /* hairline no perímetro    */
+        inset 0 -9px 16px -10px alpha(@glass-shadow, 0.30),/* sombra interna (base)    */
+        0 1px 2px alpha(@glass-shadow, 0.30),              /* contato curto            */
+        0 6px 18px alpha(@glass-shadow, 0.40);             /* profundidade ampla       */
+    transition: box-shadow .35s ease, background-image .35s ease;
+}
+.modules-left:hover,
+.modules-center:hover,
+.modules-right:hover {
+    background-image:
+        radial-gradient(ellipse farthest-side at 30% -10%,
+            alpha(@glass-rim, 0.14), alpha(@glass-rim, 0.0) 60%),
+        radial-gradient(ellipse farthest-side at 80% 130%,
+            alpha(@glass-accent, 0.16), alpha(@glass-rim, 0.0) 70%),
+        linear-gradient(to bottom,
+            alpha(@glass-tint, 0.22),
+            alpha(@glass-tint, 0.40));
+    box-shadow:
+        inset 0 1px 0 0 alpha(@glass-rim, 0.32),
+        inset 0 6px 10px -11px alpha(@glass-rim, 0.14),
+        inset 0 -1px 0 0 alpha(@glass-rim, 0.11),
+        inset 0 0 0 1px alpha(@glass-accent, 0.18),        /* hairline de acento       */
+        inset 0 -9px 16px -10px alpha(@glass-shadow, 0.30),
+        0 1px 2px alpha(@glass-shadow, 0.32),              /* contato                  */
+        0 8px 22px alpha(@glass-shadow, 0.44),             /* eleva mais no hover      */
+        0 0 14px -2px alpha(@glass-accent, 0.22);          /* halo de acento simétrico */
+}
+
+/* ============================================================================
+ *  Tipografia e estados dos módulos
+ * ========================================================================= */
+tooltip {
+    background: @background;
+    color: @glass-text;
+}
+
+#clock:hover, #custom-pacman:hover, #custom-notification:hover, #bluetooth:hover,
+#network:hover, #battery:hover, #cpu:hover, #memory:hover, #temperature:hover {
+    transition: all .3s ease;
+    color: @color9;
+}
+
+#custom-notification {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @glass-text;
+}
+#clock {
+    padding: 0px 5px;
+    color: @glass-text;
+    transition: all .3s ease;
+}
+#custom-pacman {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @glass-text;
+}
+
+/* --- Workspaces (pontos): texto invisível + halo via text-shadow --- */
+#workspaces {
+    padding: 0px 5px;
+}
+#workspaces button {
+    all: unset;
+    padding: 0px 5px;
+    color: rgba(0,0,0,0);
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, .4);
+}
+#workspaces button:hover {
+    color: rgba(0,0,0,0);
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, .7);
+    transition: all 1s ease;
+}
+#workspaces button.active {
+    color: @color9;
+    border: none;
+    transition: all 1s ease;
+}
+#workspaces button.empty {
+    color: rgba(0,0,0,0);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
+}
+#workspaces button.empty:hover {
+    color: rgba(0,0,0,0);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    transition: all 1s ease;
+}
+#workspaces button.empty.active {
+    color: @color9;
+    border: none;
+    transition: all 1s ease;
+}
+
+#bluetooth, #network {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @glass-text;
+}
+
+/* --- Bateria + estados --- */
+#battery {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @glass-text;
+}
+#battery.charging {
+    color: #26A65B;
+}
+#battery.warning:not(.charging) {
+    color: #ffbe61;
+}
+#battery.critical:not(.charging) {
+    color: #f53c3c;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* --- Grupo expansível (cpu/mem/temp) --- */
+#group-expand {
+    padding: 0px 5px;
+    transition: all .3s ease;
+}
+#custom-expand {
+    padding: 0px 5px;
+    color: alpha(@foreground, .2);
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .7);
+    transition: all .3s ease;
+}
+#custom-expand:hover {
+    color: rgba(255,255,255,.2);
+    text-shadow: 0px 0px 2px rgba(255, 255, 255, .5);
+}
+#custom-colorpicker {
+    padding: 0px 5px;
+}
+#cpu, #memory, #temperature {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @glass-text;
+}
+#custom-endpoint {
+    color: transparent;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
+}
+
+/* --- Tray --- */
+#tray {
+    padding: 0px 5px;
+    transition: all .3s ease;
+}
+#tray menu * {
+    padding: 0px 5px;
+    transition: all .3s ease;
+}
+#tray menu separator {
+    padding: 0px 5px;
+    transition: all .3s ease;
+}

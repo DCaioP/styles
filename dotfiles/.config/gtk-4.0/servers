@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0"
+      xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
+      xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
+>
+  <bookmark href="smb://10.1.1.23/metrics/" added="2026-02-20T14:30:33.207644Z" modified="2026-02-20T14:30:33.207647Z" visited="2026-02-20T14:30:33.207645Z">
+    <title>metrics on 10.1.1.23</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2026-02-20T14:30:33.207646Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="smb://10.0.0.20/storage/" added="2026-02-20T14:32:27.475225Z" modified="2026-02-20T14:32:27.475228Z" visited="2026-02-20T14:32:27.475226Z">
+    <title>storage on 10.0.0.20</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2026-02-20T14:32:27.475226Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="smb://10.0.0.20/impressao/" added="2026-05-06T10:27:30.807937Z" modified="2026-05-06T10:27:30.807941Z" visited="2026-05-06T10:27:30.807938Z">
+    <title>impressao on 10.0.0.20</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2026-05-06T10:27:30.807939Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>

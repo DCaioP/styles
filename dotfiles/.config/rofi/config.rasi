@@ -1,0 +1,17 @@
+/* Launcher (drun) — Liquid Glass. Estilo em liquid-glass.rasi */
+configuration {
+    modi:                "drun,run";
+    show-icons:          true;
+    icon-theme:          "kora";
+    drun-display-format: "{name}";
+    display-drun:        "  Apps";
+}
+
+@import "~/.config/rofi/liquid-glass.rasi"
+
+window {
+    width:    520px;
+    location: center;
+}
+listview { lines: 8; }
+element-icon { size: 30px; }

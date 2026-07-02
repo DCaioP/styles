@@ -1,0 +1,21 @@
+# -----------------------------------------------------
+# Exports
+# -----------------------------------------------------
+
+export EDITOR=nvim
+export PATH="/usr/lib/ccache/bin/:$HOME/.local/bin:$PATH"
+export ZSH="$HOME/.config/.oh-my-zsh"
+export PATH="$PATH:$HOME/.dotnet/tools"
+
+# -----------------------------------------------------
+# Init
+# -----------------------------------------------------
+
+FNM_PATH="/home/caiop/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/caiop/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+# -----------------------------------------------------
+# Garante que a completion do Angular só seja carregada depois que o sistema de completion do ZSH estiver inicializado
+(( $+functions[compdef] )) && source <(ng completion script)

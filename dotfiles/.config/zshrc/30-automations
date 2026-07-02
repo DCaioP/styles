@@ -1,0 +1,27 @@
+# -----------------------------------------------------
+# AUTOSTART
+# -----------------------------------------------------
+
+# Skip banner/fetch when shell is not an interactive human session
+# (Claude Code, scripts, pipes, NO_FETCH=1 → silencia tudo)
+if [[ -o interactive && -t 1 && -z "$CLAUDECODE" && -z "$NO_FETCH" ]]; then
+    # -----------------------------------------------------
+    # Pywal
+    # -----------------------------------------------------
+    cat ~/.cache/wal/sequences
+
+    # -----------------------------------------------------
+    # Ghosttyfetch
+    # -----------------------------------------------------
+    if [[ $(tty) == *"pts"* ]]; then
+        "$HOME/.local/bin/ghosttyfetch" < /dev/null
+    else
+        echo
+        if [ -f /bin/qtile ]; then
+            echo "Start Qtile X11 with command Qtile"
+        fi
+        if [ -f /bin/hyprctl ]; then
+            echo "Start Hyprland with command Hyprland"
+        fi
+    fi
+fi

@@ -1,0 +1,58 @@
+# -----------------------------------------------------
+# oh-myzsh themes: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# -----------------------------------------------------
+ZSH_THEME=robbyrussell
+
+# -----------------------------------------------------
+# oh-myzsh plugins
+# -----------------------------------------------------
+plugins=(
+    git
+    sudo
+    web-search
+    archlinux
+    copyfile
+    copybuffer
+    dirhistory
+    fzf-tab
+    fast-syntax-highlighting
+    zsh-autosuggestions
+)
+
+# Set-up oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+
+# -----------------------------------------------------
+# Set-up FZF key bindings (CTRL R for fuzzy history finder)
+# -----------------------------------------------------
+source <(fzf --zsh)
+
+# -----------------------------------------------------
+# fzf-tab — completion fuzzy no TAB
+# -----------------------------------------------------
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+zstyle ':fzf-tab:*' switch-group '<' '>'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always --icons=always $realpath 2>/dev/null'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -1 --color=always --icons=always $realpath 2>/dev/null'
+
+# zsh history
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+setopt appendhistory          # nunca sobrescreve, sempre append
+setopt incappendhistory       # grava cada comando na hora (não só no exit)
+setopt sharehistory           # sessões abertas leem comandos umas das outras
+setopt extendedhistory        # guarda timestamp + duração (formato : ts:dur;cmd)
+setopt histignoredups         # não grava duplicata consecutiva
+setopt histignorespace        # comando começando com espaço não vai pro histórico
+setopt histreduceblanks       # remove espaços extras antes de salvar
+
+# -----------------------------------------------------
+# Prompt
+# -----------------------------------------------------
+eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/zen.toml)"
+
+# Shipped Theme
+# eval "$(oh-my-posh init zsh --config /usr/share/oh-my-posh/themes/agnoster.omp.json)"

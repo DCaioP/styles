@@ -1,0 +1,29 @@
+# Usa o seu Zsh padrão
+command = /usr/bin/zsh
+
+# GTK_IM_MODULE é setado para o usuário em ~/.config/environment.d/im-module.conf
+# e no Hyprland (conf/keyboard.conf). 'env =' aqui só afetaria filhos do Ghostty,
+# não o próprio Ghostty, então não serve para resolver dead keys.
+
+# Remove as bordas do terminal
+window-decoration = false
+
+# Header/tab bar escuro: 'ghostty' usa a própria cor de fundo do terminal
+# (~#090407 do tema) no chrome -> bem mais escuro que o dark do Adwaita.
+window-theme = ghostty
+
+# Fonte
+font-family = "JetBrainsMono Nerd Font"
+font-size = 12
+
+# Fundo warm-dark (near-black quente). Como window-theme=ghostty, o header/tab
+# bar herda esta cor. Viés R>G>B = tom quente. Escureça/esquente à vontade.
+background = #0d0704
+
+# Opacidade e Blur
+background-opacity = 0.65
+background-blur-radius = 20
+
+# Shaders
+custom-shader-animation = always
+custom-shader = shader-playground/public/shaders/cursor_smear_fade.glsl

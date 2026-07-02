@@ -1,0 +1,58 @@
+# -----------------------------------------------------
+# General
+# -----------------------------------------------------
+alias c='clear'
+alias nf='fastfetch'
+alias pf='fastfetch'
+alias ff='fastfetch'
+# alias ls='ls_nosymlink'
+alias ls='eza --icons=always'
+alias ll='eza -al --icons=always'
+alias lt='eza -a --tree --level=1 --icons=always'
+alias v='$EDITOR'
+alias vim='$EDITOR'
+alias wifi='nmtui'
+
+# -----------------------------------------------------
+# Window Managers
+# -----------------------------------------------------
+alias Qtile='startx'
+
+# -----------------------------------------------------
+# System
+# -----------------------------------------------------
+alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+
+# -----------------------------------------------------
+# Qtile
+# -----------------------------------------------------
+alias res1='xrandr --output DisplayPort-0 --mode 2560x1440 --rate 120'
+alias res2='xrandr --output DisplayPort-0 --mode 1920x1080 --rate 120'
+alias setkb='setxkbmap de;echo "Keyboard set back to de."'
+
+# -----------------------------------------------------
+# Connections
+# -----------------------------------------------------
+alias ssh-midra='ssh -i ~/.ssh/midra-p-25.pem ubuntu@ec2-18-228-166-37.sa-east-1.compute.amazonaws.com'
+alias ssh-vm-edge='ssh caiop@192.168.20.10'
+alias ssh-vm-app='ssh caiop@192.168.20.11'
+
+# -----------------------------------------------------
+# Scripts 
+# -----------------------------------------------------
+alias acrylic='/home/caiop/programing/kromos-group/scripts/beautification/acrylic-crop.sh'
+
+# -----------------------------------------------------
+# Git
+# -----------------------------------------------------
+alias s='git status'
+
+# -----------------------------------------------------
+# LLM Context (AI)
+# -----------------------------------------------------
+alias ctx='{ echo "PROJECT STRUCTURE:"; tree -I ".git|node_modules|__pycache__|venv|.env"; echo -e "\nFILE CONTENT:"; find . -maxdepth 2 -not -path "*/.*" -not -path "*node_modules*" -not -path "*venv*" -type f -exec echo -e "\n-- FILE: {} --" \; -exec cat {} \;; } | wl-copy && echo "Contexto (Tree + Files) copiado para o clipboard!"'
+
+# -----------------------------------------------------
+# Sync & Backup
+# -----------------------------------------------------
+alias brain-clone='sudo rsync -avzuP --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found/*","/var/lib/valkey/*","/var/log/*","/var/tmp/*","/var/cache/*"} /home/caiop/programing/ caiop@10.255.252.198:/home/caiop/programing/'

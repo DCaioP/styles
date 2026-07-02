@@ -1,0 +1,153 @@
+/* =============================================================================
+ *  Rofi · Liquid Glass  — tema base compartilhado
+ *  @import "~/.config/rofi/liquid-glass.rasi" nos config-*.rasi
+ *  Frost real = blur do compositor (layerrule = blur, rofi).
+ *  Warm-dark (casa com ghostty/nautilus) + acento do pywal. Sem separadores.
+ * ========================================================================== */
+
+@import "~/.cache/wal/colors-rofi-pywal.rasi"
+
+* {
+    font:             "CodeNewRoman Nerd Font Propo 12";
+
+    g-bg:             rgba(16, 12, 9, 62%);      /* corpo frostado (janela)        */
+    g-panel:          rgba(255, 255, 255, 4%);   /* painel interno (2ª camada)     */
+    g-input:          rgba(30, 24, 16, 55%);     /* barra de busca                 */
+    g-rim:            rgba(255, 255, 255, 14%);  /* hairline de vidro              */
+    g-rim-soft:       rgba(255, 255, 255, 8%);
+    g-text:           #f2e9df;
+    g-subtext:        rgba(242, 233, 223, 50%);
+    g-accent:         @color6;                   /* seleção (segue o wallpaper)    */
+    g-accent-rim:     rgba(255, 255, 255, 28%);  /* rim do botão selecionado       */
+    g-on-accent:      #ffffff;
+
+    background-color: transparent;
+    text-color:       @g-text;
+    border:           0;
+}
+
+window {
+    transparency:     "real";
+    location:         center;
+    width:            520px;
+    border:           1px;
+    border-color:     @g-rim;
+    border-radius:    20px;
+    background-color: @g-bg;
+    padding:          14px;
+    cursor:           "default";
+}
+
+mainbox {
+    background-color: transparent;
+    orientation:      vertical;
+    spacing:          12px;
+    padding:          0px;
+    children:         [ "inputbar", "listview" ];
+}
+
+/* ---- Search ---- */
+inputbar {
+    background-color: @g-input;
+    text-color:       @g-text;
+    border:           1px;
+    border-color:     @g-rim-soft;
+    border-radius:    14px;
+    padding:          14px 16px;
+    spacing:          12px;
+    children:         [ "prompt", "entry" ];
+}
+prompt {
+    background-color: transparent;
+    text-color:       @g-accent;
+    vertical-align:   0.5;
+}
+entry {
+    background-color:  transparent;
+    text-color:        inherit;
+    cursor:            text;
+    placeholder:       "Buscar…";
+    placeholder-color: @g-subtext;
+    vertical-align:    0.5;
+}
+
+/* ---- List (painel interno = 2ª camada de vidro) ---- */
+listview {
+    background-color: @g-panel;
+    border:           1px;
+    border-color:     @g-rim-soft;
+    border-radius:    16px;
+    padding:          8px;
+    columns:          1;
+    lines:            8;
+    fixed-height:     false;
+    dynamic:          true;
+    scrollbar:        false;
+    cycle:            true;
+    spacing:          4px;
+}
+
+element {
+    background-color: transparent;
+    text-color:       @g-text;
+    border:           0;
+    border-radius:    12px;
+    padding:          11px 13px;
+    spacing:          12px;
+    cursor:           pointer;
+}
+element normal.normal,
+element alternate.normal { background-color: transparent; text-color: @g-text; }
+/* seleção/hover = botão de vidro com acento + rim claro */
+element selected.normal {
+    background-color: @g-accent;
+    border:           1px;
+    border-color:     @g-accent-rim;
+    text-color:       @g-on-accent;
+}
+element-icon {
+    background-color: transparent;
+    text-color:       inherit;
+    size:             28px;
+    cursor:           inherit;
+}
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    vertical-align:   0.5;
+    horizontal-align: 0.0;
+    cursor:           inherit;
+}
+
+/* ---- Mode switcher / buttons ---- */
+mode-switcher { background-color: transparent; spacing: 8px; }
+button {
+    background-color: @g-input;
+    text-color:       @g-subtext;
+    border:           1px;
+    border-color:     @g-rim-soft;
+    border-radius:    12px;
+    padding:          9px 12px;
+    cursor:           pointer;
+}
+button selected {
+    background-color: @g-accent;
+    border-color:     @g-accent-rim;
+    text-color:       @g-on-accent;
+}
+
+/* ---- Message / textbox ---- */
+message { background-color: transparent; padding: 0px; margin: 0px; }
+textbox {
+    background-color: @g-input;
+    text-color:       @g-text;
+    border-radius:    14px;
+    padding:          14px 16px;
+    vertical-align:   0.5;
+}
+error-message {
+    background-color: @g-bg;
+    text-color:       @g-text;
+    border-radius:    14px;
+    padding:          16px;
+}
