@@ -1,0 +1,35 @@
+{
+	"$schema": "https://vicinae.com/schemas/config.json",
+
+	"telemetry": {
+		"system_info": false
+	},
+
+	"font": {
+		"normal": {
+			"family": "SF Pro Display"
+		}
+	},
+
+	"theme": {
+		"dark": {
+			"name": "pywal",
+			"icon_theme": "Papirus-Dark"
+		},
+		"light": {
+			"name": "pywal",
+			"icon_theme": "Papirus-Dark"
+		}
+	},
+
+	"pop_to_root_on_close": true,
+
+	"launcher_window": {
+		"opacity": 0.6,
+		"material": "liquid_glass",
+		"rounding": 20,
+		"compact_mode": {
+			"enabled": true
+		}
+	}
+}

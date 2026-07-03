@@ -1,0 +1,13 @@
+# Tema Vicinae gerado pelo pywal — regenera a cada troca de wallpaper.
+# Superfícies neutras herdadas do vicinae-dark; só o ACCENT segue o wallpaper.
+[meta]
+name = "pywal"
+description = "pywal-driven (BrainX) — accent segue o wallpaper"
+variant = "dark"
+inherits = "vicinae-dark"
+
+[colors.core]
+accent = "{color6}"
+accent_foreground = "#ffffff"
+
+# background, superfícies e accents semânticos herdados do vicinae-dark (limpo).

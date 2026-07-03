@@ -1,6 +1,6 @@
 /* Set the desktop font configuration */
 * {
-    font: "SF Pro Display 11";
+    font: "Fira Sans 11";
     font-size: 11px;
 }
 

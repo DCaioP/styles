@@ -1,0 +1,13 @@
+/* Power menu — Liquid Glass (estilo em liquid-glass.rasi) */
+configuration {
+    modi:                "drun,run";
+    show-icons:          false;
+    drun-display-format: "{name}";
+}
+
+@import "~/.config/rofi/liquid-glass.rasi"
+
+window {
+    width:    400px;
+    location: center;
+}

@@ -9,7 +9,7 @@ window {
 }
 
 button {
-	font-family: 'CodeNewRoman Nerd Font Mono';
+	font-family: 'SF Pro Display', 'CodeNewRoman Nerd Font Mono';
 	font-size: 1rem;
 	background-color: rgba(11, 11, 11, 0.9);
 	color: #FFFFFF;

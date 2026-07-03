@@ -1,0 +1,6 @@
+/* Border width configuration */
+* {
+    /* Default border width for windows and elements */
+    border-width: 2px;
+}
+

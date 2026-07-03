@@ -1,109 +1,131 @@
 /* =============================================================================
  *  Rofi · Liquid Glass  — tema base compartilhado
  *  @import "~/.config/rofi/liquid-glass.rasi" nos config-*.rasi
- *  Frost real = blur do compositor (layerrule = blur, rofi).
- *  Warm-dark (casa com ghostty/nautilus) + acento do pywal. Sem separadores.
+ *
+ *  Conceito: "BrainX Design System" (claude.ai/design, engenharia reversa deste
+ *  repo) temperado com a linguagem do macOS Spotlight — barra pill com lupa,
+ *  vidro fosco translúcido, lista com seleção em vermelho.
+ *
+ *  CORES = pywal (seguem o wallpaper). Os tokens pw-* vêm do template
+ *  ~/.config/wal/templates/colors-rofi-pywal.rasi e regeneram a cada troca de
+ *  wallpaper. Accent = @pw-accent (color6).
+ *
+ *  TRANSPARÊNCIA: @pw-glass tem alpha 0.55 (> 0.30) pro Hyprland borrar a layer
+ *    (windowrule.conf: `layerrule = match:namespace ^(rofi)$, blur on`).
+ *  FONTE: SF Pro (UI do design); lupa da busca usa Nerd Font só no prompt.
  * ========================================================================== */
 
 @import "~/.cache/wal/colors-rofi-pywal.rasi"
 
 * {
-    font:             "CodeNewRoman Nerd Font Propo 12";
+    font:             "SF Pro Display 12";
 
-    g-bg:             rgba(16, 12, 9, 62%);      /* corpo frostado (janela)        */
-    g-panel:          rgba(255, 255, 255, 4%);   /* painel interno (2ª camada)     */
-    g-input:          rgba(30, 24, 16, 55%);     /* barra de busca                 */
-    g-rim:            rgba(255, 255, 255, 14%);  /* hairline de vidro              */
-    g-rim-soft:       rgba(255, 255, 255, 8%);
-    g-text:           #f2e9df;
-    g-subtext:        rgba(242, 233, 223, 50%);
-    g-accent:         @color6;                   /* seleção (segue o wallpaper)    */
-    g-accent-rim:     rgba(255, 255, 255, 28%);  /* rim do botão selecionado       */
+    /* ── Superfícies (pywal) ─────────────────────────────────────────────── */
+    g-glass:          @pw-glass;                 /* corpo frostado (segue wallpaper) */
+    g-well:           @pw-well;                  /* poço/pill do input               */
+    g-rim:            rgba(255, 255, 255, 8%);   /* hairline (border-subtle)         */
+    g-rim-strong:     rgba(255, 255, 255, 14%);  /* border-strong                    */
+
+    /* ── Accent + tints translúcidos (pywal) ─────────────────────────────── */
+    g-accent:         @pw-accent;                /* seleção/foco — segue wallpaper   */
+    g-accent-a12:     @pw-accent-a12;            /* hover                            */
+    g-accent-a27:     @pw-accent-a27;            /* fill da seleção                  */
+    g-accent-a55:     @pw-accent-a55;            /* anel/foco                        */
+
+    /* ── Texto: branco em opacidade decrescente ──────────────────────────── */
+    g-text:           #ffffff;
+    g-text-2:         rgba(255, 255, 255, 72%);
+    g-muted:          rgba(255, 255, 255, 50%);
+    g-faint:          rgba(255, 255, 255, 32%);
     g-on-accent:      #ffffff;
 
     background-color: transparent;
-    text-color:       @g-text;
+    text-color:       @g-text-2;
     border:           0;
 }
 
+/* ── GlassPanel: material frostado translúcido ────────────────────────────── */
 window {
     transparency:     "real";
     location:         center;
-    width:            520px;
+    width:            640px;
     border:           1px;
     border-color:     @g-rim;
     border-radius:    20px;
-    background-color: @g-bg;
-    padding:          14px;
+    background-color: @g-glass;
+    padding:          12px;
     cursor:           "default";
 }
 
 mainbox {
     background-color: transparent;
     orientation:      vertical;
-    spacing:          12px;
+    spacing:          10px;
     padding:          0px;
     children:         [ "inputbar", "listview" ];
 }
 
-/* ---- Search ---- */
+/* ── Spotlight: barra de busca em PILL (lupa + campo grande) ───────────────── */
 inputbar {
-    background-color: @g-input;
+    background-color: @g-well;
     text-color:       @g-text;
     border:           1px;
-    border-color:     @g-rim-soft;
-    border-radius:    14px;
-    padding:          14px 16px;
-    spacing:          12px;
+    border-color:     @g-rim-strong;
+    border-radius:    9999px;                    /* pill (macOS Spotlight)       */
+    padding:          14px 20px;
+    spacing:          14px;
     children:         [ "prompt", "entry" ];
 }
 prompt {
     background-color: transparent;
-    text-color:       @g-accent;
+    text-color:       @g-muted;                  /* lupa (fonte definida no config)  */
     vertical-align:   0.5;
 }
 entry {
+    font:              "SF Pro Display 15";
     background-color:  transparent;
-    text-color:        inherit;
+    text-color:        @g-text;
     cursor:            text;
     placeholder:       "Buscar…";
-    placeholder-color: @g-subtext;
+    placeholder-color: @g-faint;
     vertical-align:    0.5;
 }
 
-/* ---- List (painel interno = 2ª camada de vidro) ---- */
+/* ── Lista: linhas flutuam direto no vidro ────────────────────────────────── */
 listview {
-    background-color: @g-panel;
-    border:           1px;
-    border-color:     @g-rim-soft;
-    border-radius:    16px;
-    padding:          8px;
+    background-color: transparent;
+    border:           0;
+    padding:          4px 2px 2px 2px;
+    margin:           0px;
     columns:          1;
     lines:            8;
     fixed-height:     false;
     dynamic:          true;
     scrollbar:        false;
     cycle:            true;
-    spacing:          4px;
+    spacing:          3px;
 }
 
 element {
     background-color: transparent;
-    text-color:       @g-text;
+    text-color:       @g-text-2;
     border:           0;
     border-radius:    12px;
-    padding:          11px 13px;
+    padding:          9px 12px;
     spacing:          12px;
     cursor:           pointer;
 }
 element normal.normal,
-element alternate.normal { background-color: transparent; text-color: @g-text; }
-/* seleção/hover = botão de vidro com acento + rim claro */
-element selected.normal {
-    background-color: @g-accent;
+element alternate.normal { background-color: transparent; text-color: @g-text-2; }
+
+/* seleção = tint do accent (a27) + anel (a55) + texto branco */
+element selected.normal,
+element selected.active,
+element selected.urgent {
+    background-color: @g-accent-a27;
     border:           1px;
-    border-color:     @g-accent-rim;
-    text-color:       @g-on-accent;
+    border-color:     @g-accent-a55;
+    text-color:       @g-text;
 }
 element-icon {
     background-color: transparent;
@@ -119,35 +141,37 @@ element-text {
     cursor:           inherit;
 }
 
-/* ---- Mode switcher / buttons ---- */
-mode-switcher { background-color: transparent; spacing: 8px; }
+/* ── Category pills (mode-switcher) — a fileira do Spotlight ───────────────── */
+mode-switcher { background-color: transparent; spacing: 8px; margin: 4px 2px 0px 2px; }
 button {
-    background-color: @g-input;
-    text-color:       @g-subtext;
+    background-color: @g-well;
+    text-color:       @g-muted;
     border:           1px;
-    border-color:     @g-rim-soft;
-    border-radius:    12px;
-    padding:          9px 12px;
+    border-color:     @g-rim;
+    border-radius:    9999px;
+    padding:          7px 14px;
     cursor:           pointer;
 }
 button selected {
-    background-color: @g-accent;
-    border-color:     @g-accent-rim;
-    text-color:       @g-on-accent;
+    background-color: @g-accent-a27;
+    border-color:     @g-accent-a55;
+    text-color:       @g-text;
 }
 
-/* ---- Message / textbox ---- */
+/* ── Message / textbox / erro ─────────────────────────────────────────────── */
 message { background-color: transparent; padding: 0px; margin: 0px; }
 textbox {
-    background-color: @g-input;
+    background-color: @g-well;
     text-color:       @g-text;
+    border:           1px;
+    border-color:     @g-rim;
     border-radius:    14px;
-    padding:          14px 16px;
+    padding:          12px 16px;
     vertical-align:   0.5;
 }
 error-message {
-    background-color: @g-bg;
+    background-color: @g-glass;
     text-color:       @g-text;
-    border-radius:    14px;
+    border-radius:    16px;
     padding:          16px;
 }

@@ -17,4 +17,14 @@
     color13:    {color13};
     color14:    {color14};
     color15:    {color15};
+
+    /* ── BrainX × pywal · vidro translúcido + tints do accent ──────────────
+       Regenerados junto com o wallpaper. `.rgb` = "R,G,B" pro alpha do rofi. */
+    pw-glass:      rgba({color0.rgb}, 0.55);      /* corpo frostado (> 0.30 p/ o blur do Hypr pegar) */
+    pw-glass-hi:   rgba({color15.rgb}, 0.05);     /* sheen do topo                                    */
+    pw-well:       rgba({color15.rgb}, 0.06);     /* poço do input (pill)                             */
+    pw-accent:     {color6};                      /* accent — segue o wallpaper                       */
+    pw-accent-a12: rgba({color6.rgb}, 0.12);      /* hover                                            */
+    pw-accent-a27: rgba({color6.rgb}, 0.27);      /* seleção                                          */
+    pw-accent-a55: rgba({color6.rgb}, 0.55);      /* anel/foco                                        */
 }}

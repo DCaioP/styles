@@ -12,14 +12,19 @@
 /* ---- Configuration ---- */
 configuration {
     modi:                       "drun,run";
-    font:                       "SF Pro Display 11";
-    show-icons:                 true;
-	hover-select:               false;
+    font:                       "Fira Sans 11";
+    show-icons:                 false;
+    icon-theme:                 "kora";
+    display-drun:               "APPS";
+    display-run:                "RUN";
+    display-filebrowser:        "FILES";
+    display-window:             "WINDOW";
+	hover-select:               true;
     me-select-entry:            "";
     me-accept-entry:            "MousePrimary";
     drun-display-format:        "{name}";
     window-format:              "{w} · {c} · {t}";
-    scroll-method: 1;
+    
 }
 
 /* ---- Load font ---- */
@@ -33,9 +38,9 @@ configuration {
 
 /* ---- Window ---- */
 window {
-    width:                        761px;
+    width:                        400px;
     x-offset:                     0px;
-    y-offset:                     65px;
+    y-offset:                     0px;
     spacing:                      0px;
     padding:                      0px;
     margin:                       0px; 
@@ -44,8 +49,8 @@ window {
     border-color:                 #FFFFFF;
     cursor:                       "default";
     transparency:                 "real";
-    location:                     north;
-    anchor:                       north;
+    location:                     center;
+    anchor:                       center;
     fullscreen:                   false;
     enabled:                      true;
     border-radius:                10px;
@@ -59,6 +64,7 @@ mainbox {
     spacing:                      0px;
     margin:                       0px;
     background-color:             @background;
+    background-image:             @current-image;
     children:                     ["listbox"];
 }
 
@@ -75,7 +81,7 @@ listbox {
     spacing:                     20px;
     background-color:            transparent;
     orientation:                 vertical;
-    children:                    [ "inputbar", "message", "listview" ];
+    children:                    [ "listview" ];
 }
 
 /* ---- Dummy ---- */
@@ -138,85 +144,74 @@ button selected {
 /* ---- Listview ---- */
 listview {
     enabled:                      true;
-    columns:                      6;
-    lines:                        3;
-    cycle:                        false;
-    dynamic:                      false;
-    scrollbar:                    true;
+    columns:                      1;
+    lines:                        2;
+    cycle:                        true;
+    dynamic:                      true;
+    scrollbar:                    false;
     layout:                       vertical;
     reverse:                      false;
-    spacing:                      10px;
+    fixed-height:                 true;
+    fixed-columns:                true;
+    spacing:                      0px;
     padding:                      10px;
     margin:                       0px;
-    fixed-height:                 true;
-    fixed-columns:                true;    
     background-color:             @background;
-    border:                       0px;
-    flow:                         horizontal;      
+    border:0px;
 }
 
 /* ---- Element ---- */
 element {
     enabled:                      true;
-    padding:                      0px;
+    padding:                      10px;
     margin:                       5px;
     cursor:                       pointer;
     background-color:             @background;
     border-radius:                10px;
     border:                       @border-width;
-    orientation:                  vertical;
 }
 
 element normal.normal {
-    border-color:                @color11;
     background-color:            inherit;
     text-color:                  @foreground;
 }
 
 element normal.urgent {
-    border-color:                @color11;
     background-color:            inherit;
     text-color:                  @foreground;
 }
 
 element normal.active {
-    border-color:                @color11;
     background-color:            inherit;
     text-color:                  @foreground;
 }
 
 element selected.normal {
-    border-color:                @foreground;
-    background-color:            inherit;
+    background-color:            @color11;
     text-color:                  @foreground;
 }
 
 element selected.urgent {
-    border-color:                @foreground;
     background-color:            inherit;
     text-color:                  @foreground;
 }
 
 element selected.active {
-    border-color:                @foreground;
     background-color:            inherit;
     text-color:                  @foreground;
 }
 
 element alternate.normal {
-    border-color:                @color11;
     background-color:            inherit;
     text-color:                  @foreground;
 }
 
 element alternate.urgent {
-    border-color:                @color11;
     background-color:            inherit;
     text-color:                  @foreground;
 }
 
 element alternate.active {
-    border-color:                @color11;
     background-color:            inherit;
     text-color:                  @foreground;
 }
@@ -224,9 +219,8 @@ element alternate.active {
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        100px;
+    size:                        32px;
     cursor:                      inherit;
-    horizontal-align:              0.5;
 }
 
 element-text {
@@ -234,8 +228,7 @@ element-text {
     text-color:                  inherit;
     cursor:                      inherit;
     vertical-align:              0.5;
-    horizontal-align:            0.1;
-    enabled: false;
+    horizontal-align:            0.0;
 }
 
 /*****----- Message -----*****/

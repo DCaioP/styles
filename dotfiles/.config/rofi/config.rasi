@@ -1,17 +1,19 @@
-/* Launcher (drun) — Liquid Glass. Estilo em liquid-glass.rasi */
+/* Launcher (drun) — Liquid Glass / Spotlight. Estilo em liquid-glass.rasi */
 configuration {
     modi:                "drun,run";
     show-icons:          true;
     icon-theme:          "kora";
     drun-display-format: "{name}";
-    display-drun:        "  Apps";
+    display-drun:        "";
 }
 
 @import "~/.config/rofi/liquid-glass.rasi"
 
 window {
-    width:    520px;
+    width:    640px;
     location: center;
 }
-listview { lines: 8; }
-element-icon { size: 30px; }
+listview    { lines: 8; }
+element-icon { size: 28px; }
+/* lupa do Spotlight: SF Pro não tem o glifo, então só o prompt usa Nerd Font */
+prompt      { font: "JetBrainsMono Nerd Font 15"; }
