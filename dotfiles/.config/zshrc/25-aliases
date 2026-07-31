@@ -41,6 +41,9 @@ alias ssh-vm-app='ssh caiop@192.168.20.11'
 # Scripts 
 # -----------------------------------------------------
 alias acrylic='/home/caiop/programing/kromos-group/scripts/beautification/acrylic-crop.sh'
+# Sincroniza as cores do ghosttyfetch com a paleta do wal (rodar apos `wal -i`).
+# Aceita argumento: walfetch color4 | walfetch '#ff3131'
+alias walfetch='$HOME/.config/wal/scripts/ghosttyfetch-from-wal.py'
 
 # -----------------------------------------------------
 # Git
