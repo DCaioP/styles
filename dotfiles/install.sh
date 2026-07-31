@@ -30,9 +30,22 @@ link() {
     echo "  link  $dst -> $src"
 }
 
+# Pastas cujo dono é o próprio app (guardam Cache/Cookies/estado): linkamos
+# ARQUIVO por ARQUIVO. Linkar a pasta inteira mandaria os dados do app pro
+# backup e o app começaria do zero.
+FILE_ONLY=(obsidian)
+
 echo "» ~/.config"
 for d in "$DOTDIR"/.config/*; do
-    link "$d" "$HOME/.config/$(basename "$d")"
+    name="$(basename "$d")"
+    if printf '%s\n' "${FILE_ONLY[@]}" | grep -qx "$name"; then
+        for f in "$d"/*; do
+            [ -e "$f" ] || continue
+            link "$f" "$HOME/.config/$name/$(basename "$f")"
+        done
+        continue
+    fi
+    link "$d" "$HOME/.config/$name"
 done
 
 echo "» ~/ (home dotfiles)"
@@ -42,6 +55,9 @@ for f in "$DOTDIR"/home/*; do
     link "$f" "$HOME/$(basename "$f")"
 done
 shopt -u dotglob nullglob
+
+echo "» ~/.XCompose (gerado — cedilha no layout us-intl)"
+"$DOTDIR/gen-xcompose.sh" || echo "  !!    falhou; veja a mensagem acima"
 
 echo
 if [ -d "$BACKUP" ]; then
