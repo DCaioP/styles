@@ -33,7 +33,7 @@ link() {
 # Pastas cujo dono é o próprio app (guardam Cache/Cookies/estado): linkamos
 # ARQUIVO por ARQUIVO. Linkar a pasta inteira mandaria os dados do app pro
 # backup e o app começaria do zero.
-FILE_ONLY=(obsidian)
+FILE_ONLY=(obsidian ghosttyfetch)
 
 echo "» ~/.config"
 for d in "$DOTDIR"/.config/*; do
