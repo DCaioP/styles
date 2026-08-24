@@ -34,8 +34,10 @@ alias setkb='setxkbmap de;echo "Keyboard set back to de."'
 # Connections
 # -----------------------------------------------------
 alias ssh-midra='ssh -i ~/.ssh/midra-p-25.pem ubuntu@ec2-18-228-166-37.sa-east-1.compute.amazonaws.com'
-alias ssh-vm-edge='ssh caiop@192.168.20.10'
-alias ssh-vm-app='ssh caiop@192.168.20.11'
+# Hosts definidos em ~/.ssh/config (usuario, chave e agente vem de la).
+alias ssh-vm-edge='ssh vm-edge'
+alias ssh-vm-app='ssh vm-app'
+alias ssh-vm-db='ssh vm-db'
 
 # -----------------------------------------------------
 # Scripts 

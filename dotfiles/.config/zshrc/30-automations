@@ -25,3 +25,14 @@ if [[ -o interactive && -t 1 && -z "$CLAUDECODE" && -z "$NO_FETCH" ]]; then
         fi
     fi
 fi
+
+# -----------------------------------------------------
+# Agente SSH das VMs do Prisma
+# -----------------------------------------------------
+# O ~/.ssh/config aponta IdentityAgent para este socket fixo, entao o agente
+# precisa existir antes de qualquer ssh vm-*. Aqui so o processo e garantido;
+# a chave continua sendo carregada a mao, com "ssh-add", uma vez por boot.
+if [ ! -S "$HOME/.ssh/agent.sock" ]; then
+    ssh-agent -a "$HOME/.ssh/agent.sock" > /dev/null 2>&1
+fi
+export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
