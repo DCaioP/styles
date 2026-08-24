@@ -60,7 +60,14 @@ alias ctx='{ echo "PROJECT STRUCTURE:"; tree -I ".git|node_modules|__pycache__|v
 # -----------------------------------------------------
 # Sync & Backup
 # -----------------------------------------------------
-alias brain-clone='sudo rsync -avzuP --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found/*","/var/lib/valkey/*","/var/log/*","/var/tmp/*","/var/cache/*"} /home/caiop/programing/ caiop@10.255.252.198:/home/caiop/programing/'
+# Manda ~/programing para o outro micro em modo APENAS INCLUSAO: envia so o que ainda
+# nao existe la. Arquivo ja presente no destino nunca e tocado (--ignore-existing) e
+# nada e apagado. Gera os dumps dos bancos antes, para irem junto.
+alias brain-clone='"$HOME/programing/utils/sync/dump-bancos.sh"; rsync -avzP --ignore-existing /home/caiop/programing/ caiop@10.255.252.97:/home/caiop/programing/'
+# Ensaio: mostra o que seria enviado, sem enviar e sem gerar dump.
+alias brain-clone-dry='rsync -avzP --ignore-existing --dry-run /home/caiop/programing/ caiop@10.255.252.97:/home/caiop/programing/'
+# So os dumps dos bancos, sem enviar nada.
+alias brain-dump='"$HOME/programing/utils/sync/dump-bancos.sh"'
 
 # -----------------------------------------------------
 # RDP (xfreerdp3)
