@@ -120,6 +120,59 @@
     border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
 
+/* ── Auxiliary bar (painel de IA) FLUTUANTE ──
+   Mesmo tratamento do sidebar: o Chat/Claude vive no auxiliarybar, que não
+   herdava nada das regras de .part.sidebar. Cartão com --float-gap, radius,
+   material fosco e a mesma sombra (drop + inset highlight). */
+.part.auxiliarybar {
+    --float-gap: 6px;
+    margin: var(--float-gap) !important;
+    width: calc(100% - 2 * var(--float-gap)) !important;
+    height: calc(100% - 2 * var(--float-gap)) !important;
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    position: relative !important; /* âncora pro rodapé + overlay do glow */
+    background-color: var(--float-bg) !important;
+    border: none !important;
+    -webkit-backdrop-filter: blur(20px) saturate(140%) !important;
+    backdrop-filter: blur(20px) saturate(140%) !important;
+    box-shadow: var(--float-shadow) !important;
+}
+
+/* Conteúdo interno transparente pra o fundo + inset glow do cartão aparecerem
+   (inclui as superfícies próprias do chat: lista de mensagens e input box). */
+.part.auxiliarybar > .composite,
+.part.auxiliarybar .composite.title,
+.part.auxiliarybar .pane-body,
+.part.auxiliarybar .monaco-list,
+.part.auxiliarybar .monaco-list-rows,
+.part.auxiliarybar .interactive-session,
+.part.auxiliarybar .interactive-list,
+.part.auxiliarybar .chat-editing-session,
+.part.auxiliarybar .webview,
+.part.auxiliarybar iframe {
+    border-radius: inherit !important;
+    background: transparent !important;
+}
+
+/* Mesma compensação do sidebar: o conteúdo mantém a largura ORIGINAL, então o
+   overflow:hidden comeria a ponta direita das linhas. */
+.part.auxiliarybar .monaco-list-row .monaco-tl-contents {
+    padding-right: calc(2 * var(--float-gap)) !important;
+}
+
+/* Rodapé (activity bar do auxiliarybar) ancorado no fundo REAL do cartão. */
+.part.auxiliarybar .composite.header-or-footer.footer {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: auto !important;
+    background: transparent !important;
+    border-radius: 0 0 18px 18px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
 /* ── Breadcrumbs ──
    Fundo no mesmo tom do editor (transparente) e itens discretos que
    "acendem" no hover/foco. Separador suave. */
