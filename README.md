@@ -22,6 +22,7 @@ sobre um backdrop mais claro.*
 │   └── MANUAL.md      # 📖 Guia prático: editar, achar seletor, ritual do Arch
 ├── jetbrains/
 │   └── jeet_brains_theme.icls   # 🧩 Color scheme ("One Dark Vivid")
+├── dotfiles/          # 🖥️ Desktop Hyprland (symlinkado p/ ~/.config) — ver dotfiles/README.md
 ├── CLAUDE.md          # 🤖 Guia pra agentes de IA
 └── README.md
 ```

@@ -4,10 +4,18 @@ Guia pra agentes de IA trabalharem neste repositório.
 
 ## O que é
 
-Repositório **pessoal de customização de IDE** (VS Code + JetBrains) no **Arch
-Linux**. Não há build, testes ou app — são arquivos de configuração/estilo que o
-usuário copia/sincroniza pro ambiente real. Linguagens: CSS, JS (vanilla),
-JSONC, ICLS.
+Repositório **pessoal de customização** no **Arch Linux**, em duas metades:
+
+1. **IDE** (VS Code + JetBrains) — o resto deste guia trata disso.
+2. **`dotfiles/`** — o desktop Hyprland inteiro (Waybar, pywal, wallpaper,
+   zsh...). Regras próprias, incluindo o fato de que `~/.config/*` são
+   **symlinks pra cá** (então editar o repo altera o sistema ao vivo).
+   Leia [`dotfiles/README.md`](dotfiles/README.md) antes de mexer lá; o
+   wallpaper animado e o pipeline de cores estão em
+   [`dotfiles/docs/wallpaper.md`](dotfiles/docs/wallpaper.md).
+
+Não há build, testes ou app — são arquivos de configuração/estilo. Linguagens:
+CSS, JS (vanilla), JSONC, ICLS, shell, Python.
 
 ## Estrutura
 

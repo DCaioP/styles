@@ -22,12 +22,14 @@ dotfiles/
 │   ├── dunst/               # notificações
 │   ├── wlogout/             # tela de logout
 │   ├── nwg-dock-hyprland/   # dock
-│   ├── waypaper/            # GUI de wallpaper (swww)
+│   ├── waypaper/            # wallpaper animado em vídeo (mpvpaper — ver docs/)
+│   ├── ghosttyfetch/        # só config.json (cores da animação do terminal)
 │   ├── kitty/               # terminal
 │   ├── obsidian/            # só user-flags.conf (cedilha — ver Notas); pasta é do app
 │   └── nvim/ vim/ zshrc/ bashrc/ fastfetch/ ohmyposh/  # editor/shell/fetch
 ├── home/                    # dotfiles de nível ~ (.Xresources, .gtkrc-2.0)
 ├── docs/liquid-glass/       # R&D do efeito liquid glass (notas + shaders de referência)
+├── docs/wallpaper.md        # wallpaper animado + como as cores do tema são geradas
 ├── install.sh               # cria os symlinks (com backup do que existir)
 ├── gen-xcompose.sh          # gera ~/.XCompose (cedilha no us-intl); chamado pelo install
 └── packages.txt             # dependências (referência; não auto-instala)
@@ -46,9 +48,12 @@ sudo pacman -S --needed $(grep -vE '^#|^$' packages.txt | awk '{print $1}')
 hyprctl reload && killall waybar 2>/dev/null; waybar &
 ```
 
-**Cores (pywal):** o visual segue o wallpaper via [pywal](https://github.com/dylanaraps/pywal).
-Gere as cores uma vez (`wal -i /caminho/do/wallpaper.jpg`) — isso popula
-`~/.cache/wal/` que o Waybar/Hypr importam. Wallpaper em si: `swww` + `waypaper`.
+**Wallpaper e cores.** O wallpaper é **vídeo**, um por monitor (`waypaper` +
+`mpvpaper`), e as cores do tema saem de uma imagem de referência que você
+escolhe — não do vídeo em tela. Suba tudo com `waypaper --restore`; fixe a
+referência com `wallcolor <imagem>`. A montagem completa, os comandos e os
+gotchas (inclusive um que impede o wallpaper de subir no boot) estão em
+**[`docs/wallpaper.md`](docs/wallpaper.md)**.
 
 ## Notas
 
@@ -70,7 +75,8 @@ Gere as cores uma vez (`wal -i /caminho/do/wallpaper.jpg`) — isso popula
 - **Pastas de app dentro de `.config/`.** `install.sh` linka a pasta inteira, o
   que destruiria o estado de apps que guardam cache/cookies ali. Essas ficam na
   lista `FILE_ONLY` do `install.sh` e são linkadas arquivo por arquivo (hoje:
-  `obsidian`).
+  `obsidian` e `ghosttyfetch` — este guarda 2.6M de `animation.json`/`ansi.json`
+  que vêm com o binário e não são versionados).
 - **Liquid glass**: a barra usa vidro fosco montado em CSS + blur do compositor.
   A anatomia, os gotchas e o caminho pra refração real (shader no Hyprland) estão
   em [`docs/liquid-glass/`](docs/liquid-glass/).
