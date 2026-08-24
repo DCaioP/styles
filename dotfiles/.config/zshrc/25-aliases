@@ -59,3 +59,28 @@ alias ctx='{ echo "PROJECT STRUCTURE:"; tree -I ".git|node_modules|__pycache__|v
 # Sync & Backup
 # -----------------------------------------------------
 alias brain-clone='sudo rsync -avzuP --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found/*","/var/lib/valkey/*","/var/log/*","/var/tmp/*","/var/cache/*"} /home/caiop/programing/ caiop@10.255.252.198:/home/caiop/programing/'
+
+# -----------------------------------------------------
+# Wallpaper
+# -----------------------------------------------------
+# Referencia de cor do tema (pywal), independente do wallpaper na tela.
+#   wallcolor <imagem>   fixa a imagem como fonte das cores
+#   wallcolor --auto     volta a derivar do wallpaper atual
+#   wallcolor            mostra a referencia em uso
+alias wallcolor='~/.config/hypr/scripts/wallpaper-colors.sh'
+
+# Troca o wallpaper de UM monitor. Sempre com --monitor: sem ele o waypaper
+# colapsa a config por monitor num unico par "All" e voce perde o pareamento.
+#   wallset DP-1 ~/Wallpaper/live/algum.mp4
+wallset() {
+  if [[ -z ${1:-} || -z ${2:-} ]]; then
+    print -u2 "uso: wallset <monitor> <arquivo>"
+    print -u2 "monitores:"
+    hyprctl monitors -j | python3 -c '
+import json, sys
+for m in json.load(sys.stdin):
+    print("  %-12s %sx%s" % (m["name"], m["width"], m["height"]))' >&2
+    return 1
+  fi
+  waypaper --wallpaper "$2" --monitor "$1"
+}

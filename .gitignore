@@ -57,3 +57,6 @@ site/
 # Shell Script Specifics
 *.sh.log
 *.sh.done
+
+# Estado local do wallpaper (caminho absoluto da máquina, não replicável)
+dotfiles/.config/waypaper/color-ref

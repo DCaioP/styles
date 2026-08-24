@@ -1,6 +1,6 @@
 # Dependências da identidade visual/funcional do Hyprland (Arch).
 # NÃO é auto-instalado — referência p/ reconstruir num sistema novo:
-#   sudo pacman -S --needed $(grep -v '^#' packages.txt | grep -v '^$')
+#   sudo pacman -S --needed $(grep -vE '^#|^$' packages.txt | awk '{print $1}')
 # (pacotes AUR marcados; use yay/paru)
 
 hyprland
@@ -9,8 +9,15 @@ hyprlock    # (não instalado / nome pode variar / AUR)
 hyprshade
 hyprpicker
 waybar
-swww
-waypaper    # (não instalado / nome pode variar / AUR)
+
+# --- wallpaper animado (ver docs/wallpaper.md) ---
+waypaper             # AUR — frontend (GUI + CLI) dos backends abaixo
+mpvpaper             # AUR — backend de vídeo: é ele que faz o wallpaper animar
+python-screeninfo    # AUR — dep do waypaper; quebra em upgrade de Python, ver docs
+socat                # troca de vídeo reaproveitando o processo do mpvpaper
+ffmpeg               # extrai o quadro que alimenta pywal/hyprlock
+swww                 # AUR — backend de imagem estática (alternativa ao mpvpaper)
+# ---
 wofi
 rofi-wayland
 dunst    # (não instalado / nome pode variar / AUR)
