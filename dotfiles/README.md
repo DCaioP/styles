@@ -13,6 +13,7 @@ reinstalar aplicativos**, só as configs.
 dotfiles/
 ├── .config/                 # symlinkado p/ ~/.config
 │   ├── hypr/                # compositor: monitores, binds, regras, decoração, animações, lock/idle
+│   ├── quickshell/          # shell em Qt/QML: barra + Dynamic Island + busca (substituindo a waybar)
 │   ├── waybar/              # barra (liquid glass — ver docs/)
 │   ├── wal/                 # templates do pywal (cores seguem o wallpaper)
 │   ├── gtk-3.0/ gtk-4.0/    # tema GTK
