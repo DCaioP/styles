@@ -33,4 +33,14 @@
       </metadata>
     </info>
   </bookmark>
+  <bookmark href="smb://10.255.252.138/" added="2026-08-27T14:57:39.972904Z" modified="2026-08-27T14:57:39.972907Z" visited="2026-08-27T14:57:39.972905Z">
+    <title>Windows shares on 10.255.252.138</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2026-08-27T14:57:39.972906Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
 </xbel>
