@@ -32,8 +32,9 @@ link() {
 
 # Pastas cujo dono é o próprio app (guardam Cache/Cookies/estado): linkamos
 # ARQUIVO por ARQUIVO. Linkar a pasta inteira mandaria os dados do app pro
-# backup e o app começaria do zero.
-FILE_ONLY=(obsidian ghosttyfetch)
+# backup e o app começaria do zero. O rdp entra aqui porque o credentials
+# (chmod 600) mora so no ~/.config/rdp, fora do repo.
+FILE_ONLY=(obsidian ghosttyfetch rdp)
 
 echo "» ~/.config"
 for d in "$DOTDIR"/.config/*; do

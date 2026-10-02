@@ -75,6 +75,9 @@ alias brain-dump='"$HOME/programing/utils/sync/dump-bancos.sh"'
 # As credenciais ficam em ~/.config/rdp/credentials (chmod 600), fora daqui.
 # A linha de comando inteira vai por stdin (/args-from:stdin), entao a senha
 # nao aparece em `ps`, nem no historico, nem neste arquivo.
+#
+# Diagnostico de clipboard: rdp <host> /drive:tools,$HOME/.config/rdp/tools
+# e no Windows: powershell -ExecutionPolicy Bypass -File \\tsclient\tools\clipdump.ps1 <rotulo>
 rdp() {
   local cfg="${RDP_CREDENTIALS:-$HOME/.config/rdp/credentials}"
   [[ -r $cfg ]] || { print -u2 "rdp: credenciais nao encontradas em $cfg"; return 1 }
@@ -99,7 +102,7 @@ rdp() {
 
   printf '%s\n' "/u:$user" "/p:$pass" "/v:$ip" \
                 "/size:${RDP_SIZE:-1920x1080}" /cert:ignore "$@" \
-    | xfreerdp3 /args-from:stdin
+    | ${RDP_BIN:-xfreerdp3} /args-from:stdin
 }
 
 alias rdp-ponto='rdp ponto'
