@@ -4,7 +4,8 @@ Guia pra agentes de IA trabalharem neste repositório.
 
 ## O que é
 
-Repositório **pessoal de customização** no **Arch Linux**, em duas metades:
+Repositório **pessoal de customização** no **Arch Linux**, em duas metades
+(mais um extra):
 
 1. **IDE** (VS Code + JetBrains) — o resto deste guia trata disso.
 2. **`dotfiles/`** — o desktop Hyprland inteiro (Waybar, pywal, wallpaper,
@@ -13,6 +14,14 @@ Repositório **pessoal de customização** no **Arch Linux**, em duas metades:
    Leia [`dotfiles/README.md`](dotfiles/README.md) antes de mexer lá; o
    wallpaper animado e o pipeline de cores estão em
    [`dotfiles/docs/wallpaper.md`](dotfiles/docs/wallpaper.md).
+3. **`claude/mods/`** — mods (plugins de hooks) do Claude Code. Hoje só o
+   `token-space`: mapa cósmico da janela de contexto acima do prompt e um
+   foguete no lugar do spinner. Ele carrega **direto deste repo** via
+   `env.CLAUDE_CODE_PLUGIN_DIRS` no `~/.claude/settings.json`, então editar
+   aqui recarrega o mod ao vivo. Pra mod novo, acrescente o caminho nessa
+   variável (separador `:`). Validar: `claude plugin validate <pasta>`;
+   testar: `claude plugin test <pasta>`. `.claude-plugin/types/` é gerado
+   (está no gitignore).
 
 Não há build, testes ou app — são arquivos de configuração/estilo. Linguagens:
 CSS, JS (vanilla), JSONC, ICLS, shell, Python.
