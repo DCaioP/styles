@@ -60,3 +60,6 @@ site/
 
 # Estado local do wallpaper (caminho absoluto da máquina, não replicável)
 dotfiles/.config/waypaper/color-ref
+
+# Backups automáticos de config (ex.: hypr/conf/*.conf.bak.<epoch>)
+*.bak.*
