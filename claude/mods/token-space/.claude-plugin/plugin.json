@@ -1,0 +1,6 @@
+{
+  "name": "token-space",
+  "version": "0.1.0",
+  "description": "A live cosmic map of the context window above the prompt, and a rocket for the spinner, in animated ANSI art.",
+  "types": "./types/index.d.ts"
+}
