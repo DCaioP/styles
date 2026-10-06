@@ -11,10 +11,15 @@ if [[ -o interactive && -t 1 && -z "$CLAUDECODE" && -z "$NO_FETCH" ]]; then
     cat ~/.cache/wal/sequences
 
     # -----------------------------------------------------
-    # Ghosttyfetch
+    # Spacefetch (animado enquanto se digita); ghosttyfetch se ele faltar
     # -----------------------------------------------------
     if [[ $(tty) == *"pts"* ]]; then
-        "$HOME/.local/bin/ghosttyfetch" < /dev/null
+        if [[ -f "$HOME/programing/personal/spacefetch/spacefetch.zsh" ]]; then
+            source "$HOME/programing/personal/spacefetch/spacefetch.zsh"
+            spacefetch_start
+        else
+            "$HOME/.local/bin/ghosttyfetch" < /dev/null
+        fi
     else
         echo
         if [ -f /bin/qtile ]; then
